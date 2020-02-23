@@ -53,3 +53,9 @@ Ref: WSL.id > Weg.id
 Ref: WSL.strecke > SB.strecke
 Ref: WSL.von > SB.order
 Ref: WSL.bis > SB.order
+
+Table Fahrt {
+  weg int [pk]
+}
+
+Ref: Fahrt.weg > Weg.id
