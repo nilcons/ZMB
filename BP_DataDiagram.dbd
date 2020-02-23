@@ -1,0 +1,55 @@
+
+Table Provider as P {
+  id int [pk]
+  name varchar
+}
+
+Table Provider_BetriebsPunkt as IBP {
+  bp char(4) [pk]
+  provider int [pk]
+}
+
+Ref: IBP.bp > BP.id
+Ref: IBP.provider > P.id
+
+Table BetriebsPunkt as BP {
+  id char(4) [pk]
+  name varchar
+}
+
+Table Strecke as S {
+  id varchar [pk]
+  provider int
+  name varchar
+}
+
+Ref: S.provider > P.id
+
+Table Strecke_BPList as SB {
+  strecke varchar [pk]
+  order int [pk]
+  id varchar
+  bp char(4)
+  km int
+}
+
+Ref: SB.strecke > S.id
+Ref: SB.bp > BP.id
+ 
+Table Weg {
+  id int [pk]
+  name varchar
+}
+ 
+Table Weg_StreckeList as WSL {
+  id int [pk]
+  order int [pk]
+  strecke varchar
+  von int
+  bis int
+}
+
+Ref: WSL.id > Weg.id
+Ref: WSL.strecke > SB.strecke
+Ref: WSL.von > SB.order
+Ref: WSL.bis > SB.order
