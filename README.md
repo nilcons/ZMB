@@ -1,11 +1,13 @@
 # Routes
 
-The goal of this project, is to add route data to the system.  With
-this, then can more complicated pathings can be built and saved, and
-the km length of them can be calculated.
+The goal of this project, is to add route data to Dreischeibe.  Using
+the route data, the user should be able to build up pathings, save
+those and compute the KM length for them.
 
-This part of the project, should support importing route data from
-multiple locations: e.g. SBB and by-hand entry.
+We need to support importing route data from multiple providers:
+e.g. SBB and by-hand entry.
+
+In this document, we will discuss the data model and file formats.
 
 # Terminology, entities
 
