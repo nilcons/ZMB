@@ -30,8 +30,8 @@ Fahrt: a train operated on a Weg.
 See `BP_DataDiagram.pdf` and `BP_DataDiagram.dbd`.  (Can be nicely
 edited and formatted on the dbdiagram.io website.)
 
-Provider table: representing a Provider.  Probably we will have other
-attributes apart from "name", e.g. if we in the future want to
+Provider table: representing a data provider.  Probably we will have
+other attributes apart from "name", e.g. if we in the future want to
 automatically download data periodically, then we could have a
 download URL here or something similar.
 
@@ -49,14 +49,19 @@ Ge-La Praille (LP - CHNE)".
 
 Strecke_BPList: list of BPs (stations) in a Strecke.  We store the id
 from XML (in format `SNN_2438_4341`).  And the KM data, being 0 at
-station 0.
+station 0.  The `order` field defines the order of the BPs in the
+Strecke, starting at 0.
 
 Weg: this is what the user can build up on the UI, a combination of
 Strecken to make a rideable path.
 
 Weg_StreckeList: list of Strecken building up a Weg.  (strecke, von)
 AND (strecke, bis) are foreign keys for the primary key of
-`Strecke_BPList` (strecke, order).
+`Strecke_BPList` (strecke, order).  The `order` field defines the
+order of the Strecken in the Weg, starting at 0.
+
+Fahrt: an instantionation of a Weg.  Can contain all necessary
+metadata that we need, e.g. timestamp, type of vehicles involved, etc.
 
 # SBB eRADN import
 
