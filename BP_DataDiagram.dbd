@@ -36,12 +36,12 @@ Table Strecke_BPList as SB {
 Ref: SB.strecke > S.id
 Ref: SB.bp > BP.id
  
-Table Weg {
+Table Fahrt {
   id int [pk]
   name varchar
 }
  
-Table Weg_StreckeList as WSL {
+Table Fahrt_StreckeList as FSL {
   id int [pk]
   order int [pk]
   strecke varchar
@@ -49,13 +49,13 @@ Table Weg_StreckeList as WSL {
   bis int
 }
 
-Ref: WSL.id > Weg.id
-Ref: WSL.strecke > SB.strecke
-Ref: WSL.von > SB.order
-Ref: WSL.bis > SB.order
+Ref: FSL.id > Fahrt.id
+Ref: FSL.strecke > SB.strecke
+Ref: FSL.von > SB.order
+Ref: FSL.bis > SB.order
 
-Table Fahrt {
+Table Rundfahrt {
   weg int [pk]
 }
 
-Ref: Fahrt.weg > Weg.id
+Ref: Rundfahrt.weg > Fahrt.id
