@@ -1,61 +1,57 @@
 
-Table Provider as P {
+Table Provider {
   id int [pk]
   name varchar
 }
 
-Table Provider_BetriebsPunkt as IBP {
-  bp char(4) [pk]
+Table Provider_Station {
+  station char(4) [pk]
   provider int [pk]
 }
 
-Ref: IBP.bp > BP.id
-Ref: IBP.provider > P.id
+Ref: Provider_Station.station > Station.id
+Ref: Provider_Station.provider > Provider.id
 
-Table BetriebsPunkt as BP {
+Table Station {
   id char(4) [pk]
   name varchar
 }
 
-Table Strecke as S {
+Table Railline {
   id varchar [pk]
   provider int
   name varchar
 }
 
-Ref: S.provider > P.id
+Ref: Railline.provider > Provider.id
 
-Table Strecke_BPList as SB {
-  strecke varchar [pk]
+Table Railline_Station {
+  railline varchar [pk]
   order int [pk]
   id varchar
-  bp char(4)
-  km int
+  station char(4)
+  meter int
 }
 
-Ref: SB.strecke > S.id
-Ref: SB.bp > BP.id
+Ref: Railline_Station.railline > Railline.id
+Ref: Railline_Station.station > Station.id
  
-Table Fahrt {
+Table Trip {
   id int [pk]
   name varchar
+  computed_meter int
 }
  
-Table Fahrt_StreckeList as FSL {
+Table Trip_Railline as FSL {
   id int [pk]
   order int [pk]
-  strecke varchar
-  von int
-  bis int
+  railline varchar
+  from int
+  to int
 }
 
-Ref: FSL.id > Fahrt.id
-Ref: FSL.strecke > SB.strecke
-Ref: FSL.von > SB.order
-Ref: FSL.bis > SB.order
+Ref: FSL.id > Trip.id
+Ref: FSL.railline > Railline_Station.railline
+Ref: FSL.from > Railline_Station.order
+Ref: FSL.to > Railline_Station.order
 
-Table Rundfahrt {
-  weg int [pk]
-}
-
-Ref: Rundfahrt.weg > Fahrt.id
