@@ -31,6 +31,8 @@ Table Railline_Station {
   id varchar
   station char(4)
   meter int
+  km1 char(10)
+  km2 char(10)
 }
 
 Ref: Railline_Station.railline > Railline.id
