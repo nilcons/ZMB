@@ -42,16 +42,16 @@ Table Trip {
   computed_meter int
 }
  
-Table Trip_Railline as FSL {
-  id int [pk]
+Table Trip_Railline {
+  trip int [pk]
   order int [pk]
   railline varchar
   from int
   to int
 }
 
-Ref: FSL.id > Trip.id
-Ref: FSL.railline > Railline_Station.railline
-Ref: FSL.from > Railline_Station.order
-Ref: FSL.to > Railline_Station.order
+Ref: Trip_Railline.trip > Trip.id
+Ref: Trip_Railline.railline > Railline_Station.railline
+Ref: Trip_Railline.from > Railline_Station.order
+Ref: Trip_Railline.to > Railline_Station.order
 
