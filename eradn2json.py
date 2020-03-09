@@ -47,17 +47,16 @@ for strecke in inp.ns2_radn_daten.strecken.strecke:
                 we_are_the_first = False
             else:
                 real_km += abs(float(bp["km1"]) - prev_km)
+            if bp["km2"]:
+                prev_km = float(bp["km2"])
+            else:
+                prev_km = float(bp["km1"])
 
             next_bp = BP()
             next_bp.id = bp["id"]
             next_bp.km = "{0:.1f}".format(real_km)
             next_bp.km1 = bp["km1"] or ""
             next_bp.km2 = bp["km2"] or ""
-            if bp["km2"]:
-                prev_km = float(bp["km2"])
-            else:
-                prev_km = float(bp["km1"])
-
             next_bp.name = bp["bpAbkuerzung"]
             next_strecke.bpe.append(next_bp)
 
